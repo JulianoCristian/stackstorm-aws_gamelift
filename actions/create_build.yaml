@@ -1,0 +1,33 @@
+---
+description: 
+pack: aws_gamelift
+enabled: true
+entry_point: run.py
+name: create_build
+runner_type: python-script
+parameters:
+  action:
+    default: create_build
+    immutable: true
+    type: string
+  cls:
+    default: gamelift
+    type: string
+  headers:
+    type: string
+  module_path:
+    default: boto3
+    immutable: true
+    type: string
+  Name:
+    type: string
+    description: "Descriptive label that is associated with a build. Build names do not need to be unique. You can use UpdateBuild to change this value later. "
+  Version:
+    type: string
+    description: "Version that is associated with this build. Version strings do not need to be unique. You can use UpdateBuild to change this value later. "
+  StorageLocation:
+    type: object
+    description: "Amazon S3 location of the game build files to be uploaded. The S3 bucket must be owned by the same AWS account that you're using to manage Amazon GameLift. It also must in the same region that you want to create a new build in. Before calling CreateBuild with this location, you must allow Amazon GameLift to access your Amazon S3 bucket (see Create a Build with Files in Amazon S3)."
+  OperatingSystem:
+    type: string
+    description: "Operating system that the game server binaries are built to run on. This value determines the type of fleet resources that you can use for this build. If your game build contains multiple executables, they all must run on the same operating system."

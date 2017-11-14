@@ -1,0 +1,32 @@
+---
+description: 
+pack: aws_gamelift
+enabled: true
+entry_point: run.py
+name: start_matchmaking
+runner_type: python-script
+parameters:
+  action:
+    default: start_matchmaking
+    immutable: true
+    type: string
+  cls:
+    default: gamelift
+    type: string
+  headers:
+    type: string
+  module_path:
+    default: boto3
+    immutable: true
+    type: string
+  ConfigurationName:
+    type: string
+    description: "Name of the matchmaking configuration to use for this request. Matchmaking configurations must exist in the same region as this request."
+    required: true
+  Players:
+    type: array
+    description: "Information on each player to be matched. This information must include a player ID, and may contain player attributes and latency data to be used in the matchmaking process. After a successful match, Player objects contain the name of the team the player is assigned to."
+    required: true
+  TicketId:
+    type: string
+    description: "Unique identifier for a matchmaking ticket. Use this identifier to track the matchmaking ticket status and retrieve match results."
